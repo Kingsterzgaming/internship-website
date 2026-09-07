@@ -1,0 +1,58 @@
+// Prisma schema for Youth Career Guide
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Career {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  category    String
+  description String
+  education   String
+  demand      String
+  skills      String[] // 4-6 key technical & core skills
+  careerPath  Json     // Array of stages: { stage: string, role: string, description: string, years: string }
+  salaryGuide String?  // Clearly identified illustrative salary range
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Resource {
+  id          String   @id @default(uuid())
+  title       String
+  category    String
+  description String
+  content     String   // Full guide article content
+  readTime    String   // e.g. "5 min read"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Opportunity {
+  id          String   @id @default(uuid())
+  title       String
+  company     String
+  location    String
+  type        String   // Internship, Full-time
+  workMode    String   // Remote, On-site, Hybrid
+  salary      String   // Clearly identified demo stipend/salary
+  description String
+  deadline    String   // e.g. "Rolling" or "March 30, 2026"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Youth Career Guide & AI Job Finder",
+  "description": "AI-powered career exploration, internship & entry-level job finder, skill roadmaps, and interview preparation for students and freshers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
